@@ -1,14 +1,19 @@
 import {defineStore} from 'pinia'
+import {ref} from "vue";
 
 export const useLoginUserStore = defineStore('loginUser', {
     state: ()=>{
-        loginUser: null
     },
     getters: {
-        getLoginUser: (state) => {
-            return '6666'
+        isLogin:(state) =>{
         }
     },
-    actions: {}
+    actions: {
+        setLoginUser(user){
+        },
+        clearLoginUser () {
+        
+        }
+    }
 })
 
