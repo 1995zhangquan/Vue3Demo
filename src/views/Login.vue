@@ -103,6 +103,8 @@
 <script setup>
 import {reactive, ref} from "vue";
 import {userFormValidate} from "@/util/formValidate.js";
+import {axiosPost} from "@/util/axiosApi.js";
+import router from "@/router/router.js";
 
 
 
@@ -120,38 +122,52 @@ const formData = reactive({
 });
 //定义校验规则
 const validateRules = {
-	userName :[{name:'required', message:'请输入用户名'}],
-	password:[{name:'required', message:'请输入密码'}]
+	userName: [{name:'required', message:'请输入用户名'}],
+	password: [{name:'required', message:'请输入密码'}]
 }
 
 const {errors, validateField, validateForm} = userFormValidate(validateRules);
 
 
-const login = ()=> {
-	errors.value = null;
-	loginErrorMsg = '';
-	isLoginError = false;
-	isLogging = true;
+const login = async ()=> {
+	errors.value = {};
+  loginErrorMsg.value = '';
+	isLoginError.value = false;
+	isLogging.value = true;
+
 	if (validateForm(formData)) {
 
 		console.log('校验成功，提交表单');
-		// const loginRequest = async ()=>{
-		// 	const responseData = await axiosPost('/user/login', {userName:formData.userName,password:formData.password});
-		// 	if (!responseData.value.err) {
-		// 		//写入token
-		// 		sessionStorage.setItem("token", responseData.value.token);
-		// 		//设定已登录
-		// 		router.push('/');
-		// 	} else {
-		// 		isLogging = false;
-		// 		isLoginError = true;
-		// 		loginErrorMsg = responseData.value.msg;
-		// 	}
-		// }
+    try {
+        const {responseData} = await axiosPost('/user/login', {userName:formData.userName,password:formData.password});
+        if (!responseData.value.err) {
+          //写入token
+          sessionStorage.setItem("token", responseData.value.token);
+          //设定已登录
+          console.log('登录成功');
+          await router.push('/');
+
+        } else {
+          isLogging.value = false;
+          isLoginError.value = true;
+          loginErrorMsg.value = responseData.value.msg;
+        }
+    } catch (error) {
+      loginErrorMsg.value = '请求异常';
+      isLoginError.value = true;
+      isLogging.value = false;
+    }
+
 	} else {
-		loginErrorMsg = errors.value;
-		isLoginError = true;
-		isLogging = false;
+    debugger
+    if (errors.value.userName.length > 0 && errors.value.password.length > 0) {
+      loginErrorMsg.value = '请输入用户名和密码';
+    } else {
+      loginErrorMsg.value = errors.value.userName.length > 0 ? errors.value.userName : errors.value.password;
+    }
+
+		isLoginError.value = true;
+		isLogging.value = false;
 		console.log('控制台输出::::::'+ errors.value);
 	}
 }
