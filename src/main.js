@@ -4,16 +4,19 @@ import router from "@/router/router.js";
 import {createPinia} from "pinia";
 
 
-import '@/assets/images/favicon.ico';
-import '@/assets/css/com_css_family.css';
-import '@/assets/css/bootstrap/css/bootstrap.min.css';
-import '@/assets/pages/waves/css/waves.min.css';
-import '@/assets/icon/themify-icons/themify-icons.css';
-import '@/assets/icon/icofont/css/icofont.css';
-import '@/assets/icon/font-awesome/css/font-awesome.min.css';
-import '@/assets/css/style.css';
-
-
+import '@/assets/extra-libs/datatables.net-bs4/css/dataTables.bootstrap4.css';
+import '@/assets/dist/css/style.min.css';
+import '@/assets/libs/jquery/dist/jquery.min.js';
+import '@/assets/libs/popperjs/dist/popper.min.js';
+import '@/assets/libs/bootstrap/dist/js/bootstrap.min.js';
+import '@/assets/dist/js/app-style-switcher.js';
+import '@/assets/dist/js/feather.min.js';
+import '@/assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js';
+import '@/assets/extra-libs/sparkline/sparkline.js';
+import '@/assets/dist/js/sidebarmenu.js';
+import '@/assets/dist/js/custom.min.js';
+import '@/assets/extra-libs/datatables.net/js/jquery.dataTables.min.js';
+import '@/assets/dist/js/pages/datatable/datatable-basic.init.js';
 const pinia = createPinia();
 
 createApp(App)

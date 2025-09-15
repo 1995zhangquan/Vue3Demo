@@ -8,16 +8,24 @@ const router = createRouter({
         name: 'login',
         component: import('@/views/Login.vue')
     },{
-        path: '/index',
-        name: 'index',
+        path: '/register',
+        name: 'register',
+        component: import('@/views/register.vue')
+    },{
+        path: '/forgotPassword',
+        name: 'forgotPassword',
+        component: import('@/views/forgotPassword.vue')
+    },{
+        path: '/main',
+        name: 'main',
         meta:{
             requiresAuth: true
         },
-        component: import('@/components/index.vue')
+        component: ()=> import('@/views/Main.vue')
     },{
         path: '/',
         name: 'index',
-        redirect: '/index',
+        redirect: '/main',
         meta:{
             requiresAuth: true
         }
@@ -27,7 +35,7 @@ const router = createRouter({
 router.beforeEach((to, from, next) => {
     
     if (to.meta.requiresAuth) {
-        debugger
+        
         if (null != sessionStorage.getItem('token')) {
             next();
         } else {
