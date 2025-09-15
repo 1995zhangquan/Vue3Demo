@@ -8,16 +8,16 @@ const router = createRouter({
         name: 'login',
         component: import('@/views/Login.vue')
     },{
-        path: '/mainHtmlBody',
-        name: 'MainHtmlBody',
+        path: '/index',
+        name: 'index',
         meta:{
             requiresAuth: true
         },
-        component: import('@/components/MainHtmlBody.vue')
+        component: import('@/components/index.vue')
     },{
         path: '/',
         name: 'index',
-        redirect: '/mainHtmlBody',
+        redirect: '/index',
         meta:{
             requiresAuth: true
         }
