@@ -5,11 +5,6 @@
 		<div class="col-12">
 			<div class="card">
 				<div class="card-body">
-					<h4 class="card-title">Zero Configuration</h4>
-					<h6 class="card-subtitle">DataTables has most features enabled by default, so all you
-						need to do to use it with your own tables is to call the construction
-						function:<code> $().DataTable();</code>. You can refer full documentation from here
-						<a href="https://datatables.net/">Datatables</a></h6>
 					<div class="table-responsive">
 						<div id="zero_config_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4">
 							<div class="row">
@@ -24,7 +19,7 @@
 								</div>
 								<div class="col-sm-12 col-md-6">
 									<div id="zero_config_filter" class="dataTables_filter">
-										<label>Search:<input type="search" class="form-control form-control-sm" placeholder="" aria-controls="zero_config"></label>
+										<label>搜索:<input type="search" class="form-control form-control-sm" placeholder="" aria-controls="zero_config"></label>
 									</div>
 								</div>
 							</div>
@@ -33,15 +28,16 @@
 									<table id="zero_config" class="table table-striped table-bordered no-wrap dataTable" role="grid" aria-describedby="zero_config_info">
 										<thead>
 										<tr role="row">
-											<th class="sorting_asc" tabindex="0" aria-controls="zero_config" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 0px;">Name</th>
-											<th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 0px;">Position</th>
-											<th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 0px;">Office</th>
-											<th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 0px;">Age</th>
-											<th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending" style="width: 0px;">Start date</th>
-											<th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending" style="width: 0px;">Salary</th>
+											<th class="sorting_asc" tabindex="0" aria-controls="zero_config" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 0px;">姓名</th>
+											<th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 0px;">性别</th>
+											<th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 0px;">年龄</th>
+											<th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 0px;">手机号码</th>
+											<th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending" style="width: 0px;">邮箱</th>
+											<th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending" style="width: 0px;">注册时间</th>
 										</tr>
 										</thead>
 										<tbody>
+
 										<tr role="row" class="odd">
 											<td class="sorting_1">Airi Satou</td>
 											<td>Accountant</td>
@@ -123,16 +119,6 @@
 											<td>$433,060</td>
 										</tr>
 										</tbody>
-										<tfoot>
-										<tr>
-											<th rowspan="1" colspan="1">Name</th>
-											<th rowspan="1" colspan="1">Position</th>
-											<th rowspan="1" colspan="1">Office</th>
-											<th rowspan="1" colspan="1">Age</th>
-											<th rowspan="1" colspan="1">Start date</th>
-											<th rowspan="1" colspan="1">Salary</th>
-										</tr>
-										</tfoot>
 									</table>
 								</div>
 							</div>
@@ -179,4 +165,14 @@
 	</div>
 </template>
 <script setup>
+
+	import {computed} from "vue";
+	import {axiosPost} from "@/util/axiosApi.js";
+
+	const userList = computed(async ()=>{
+		const {responseData} = await axiosPost('/user/list',{});
+		debugger
+		return responseData.value;
+	})
+
 </script>
