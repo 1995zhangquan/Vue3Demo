@@ -1,35 +1,21 @@
 import {createRouter, createWebHistory} from "vue-router"
+import loginRouter from "@/router/loginRouter.js";
+import siderRouter from "@/router/siderRouter.js";
 
+const routes = [
+    ...loginRouter,
+    ...siderRouter,
+    {
+        path: '/:pathMath(.*)*',
+        name: '404',
+        component: () => import('@/views/404.vue')
+        
+    }
+];
 
 const router = createRouter({
     history: createWebHistory(),
-    routes: [{
-        path: '/login',
-        name: 'login',
-        component: import('@/views/Login.vue')
-    },{
-        path: '/register',
-        name: 'register',
-        component: import('@/views/register.vue')
-    },{
-        path: '/forgotPassword',
-        name: 'forgotPassword',
-        component: import('@/views/forgotPassword.vue')
-    },{
-        path: '/main',
-        name: 'main',
-        meta:{
-            requiresAuth: true
-        },
-        component: ()=> import('@/views/Main.vue')
-    },{
-        path: '/',
-        name: 'index',
-        redirect: '/main',
-        meta:{
-            requiresAuth: true
-        }
-    }]
+    routes
     
 });
 router.beforeEach((to, from, next) => {

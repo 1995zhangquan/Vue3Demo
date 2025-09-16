@@ -137,19 +137,9 @@
 <script setup>
 import '@/assets/lr/vendor/fonts/boxicons.css';
 import '@/assets/lr/vendor/css/core.css';
-import '@/assets/lr/vendor/css/theme-default.css';
 import '@/assets/lr/css/demo.css';
-import '@/assets/lr/vendor/libs/perfect-scrollbar/perfect-scrollbar.css';
 import '@/assets/lr/vendor/css/pages/page-auth.css';
+import '@/assets/lr/vendor/css/theme-default.css';
+import '@/assets/lr/vendor/libs/perfect-scrollbar/perfect-scrollbar.css';
 import '@/assets/lr/online/fontsgoogleapiscom.css';
-
-
-import '@/assets/lr/vendor/js/helpers.js';
-import '@/assets/lr/js/config.js';
-import '@/assets/lr/vendor/libs/jquery/jquery.js';
-import '@/assets/lr/vendor/libs/popper/popper.js';
-import '@/assets/lr/vendor/js/bootstrap.js';
-import '@/assets/lr/vendor/libs/perfect-scrollbar/perfect-scrollbar.js';
-import '@/assets/lr/vendor/js/menu.js';
-import '@/assets/lr/js/main.js';
 </script>

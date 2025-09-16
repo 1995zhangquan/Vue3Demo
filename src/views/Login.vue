@@ -101,6 +101,14 @@
 	</div>
 </template>
 <script setup>
+
+import '@/assets/lr/vendor/fonts/boxicons.css';
+import '@/assets/lr/vendor/css/core.css';
+import '@/assets/lr/css/demo.css';
+import '@/assets/lr/vendor/css/pages/page-auth.css';
+import '@/assets/lr/vendor/css/theme-default.css';
+
+
 import {reactive, ref} from "vue";
 import {userFormValidate} from "@/util/formValidate.js";
 import {axiosPost} from "@/util/axiosApi.js";

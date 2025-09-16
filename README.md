@@ -1,3 +1,8 @@
+github提交git代理
+
+git config http.proxy 'http://127.0.0.1:7890'
+git config https.proxy 'http://127.0.0.1:7890'
+
 ## 1.v-on 修饰符
 
     .stop	阻止事件冒泡
