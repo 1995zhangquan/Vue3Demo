@@ -118,16 +118,19 @@
 	</div>
 </template>
 <script setup>
-
-
-import {onBeforeMount, ref} from "vue";
+import {computed, onBeforeMount, ref} from "vue";
 import {axiosPost} from "@/util/axiosApi.js";
+import { computedAsync } from '@vueuse/core';
 
-const userList = ref([]);
+// const userList = ref([]);
+// onBeforeMount(async () => {
+// 	const {responseData} = await axiosPost('/user/list', {});
+// 	userList.value = responseData.value;
+// })
 
-onBeforeMount(async () => {
+const userList = computedAsync(async () => {
 	const {responseData} = await axiosPost('/user/list', {});
-	userList.value = responseData.value;
+	return responseData.value;
 })
 
 </script>

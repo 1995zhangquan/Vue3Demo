@@ -31,6 +31,12 @@ git config https.proxy 'http://127.0.0.1:7890'
             get(){return ...},
             set(value){}
         })
+        异步计算属性
+        import { computedAsync } from '@vueuse/core'
+        const userList = computedAsync(async () => {
+            const {responseData} = await axiosPost('/user/list', {});
+            return responseData.value;
+        })
     4.2 监听
         4.2.1 基础使用
             const count = ref(0);
